@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You George!!</title>
+    <title>Kaki Clicker</title>
+    <link rel="icon" href="icon.png" type="image/png">
     <style>
         body {
             display: flex;
@@ -33,22 +34,25 @@
             z-index: 1;
             position: relative;
         }
+        .title {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
         .counter {
             margin-top: 20px;
             font-size: 24px;
         }
-        .button {
+        .clickable-image {
             margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>I love you George!!</h1>
+        <h1 class="title">Kaki Clicker</h1>
         <div class="counter">Counter: <span id="counterValue">0</span></div>
-        <button class="button" onclick="incrementCounter()">Click Me!</button>
+        <img src="clickable_image.jpg" alt="Clickable Image" class="clickable-image" onclick="incrementCounter()">
     </div>
 
     <script>
