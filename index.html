@@ -36,10 +36,40 @@
     </div>
 
     <script>
-        let counter = 0;
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
 
+        // Function to get a cookie
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        // Function to increment the counter
         function incrementCounter() {
+            let counter = parseInt(getCookie('counter')) || 0;
             counter++;
+            setCookie('counter', counter, 365); // Store the counter value in a cookie for 365 days
+            document.getElementById('counterValue').innerText = counter;
+        }
+
+        // Initialize the counter value from the cookie
+        window.onload = function() {
+            let counter = parseInt(getCookie('counter')) || 0;
             document.getElementById('counterValue').innerText = counter;
         }
     </script>
