@@ -82,11 +82,8 @@
         // Function to increment the counter
         function incrementCounter() {
             let counter = parseInt(getCookie('counter')) || 0;
-            if (counter > 200) {
-                counter += 2; // Power-up: increment by 2
-            } else {
-                counter++; // Normal increment
-            }
+            let increment = Math.floor(counter / 200) + 1; // Calculate the increment based on the counter value
+            counter += increment;
             setCookie('counter', counter, 365); // Store the counter value in a cookie for 365 days
             document.getElementById('counterValue').innerText = counter;
         }
